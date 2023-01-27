@@ -1,4 +1,4 @@
-#include"dstack1.c"
+#include"DynamicStack.c"
 void main()
 {
  stack stk;
