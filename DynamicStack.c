@@ -1,19 +1,27 @@
 #include<stdio.h>
 #include<conio.h>
 typedef int item_type;
+
+                             //Structure Declaration ......
+                 //Node Struct
 typedef struct node
  {
    struct node * pre;
    item_type info;
  } node;
+                //Stack Struct
 typedef struct
  {
   node * top;
  } stack;
+ 
+               //init function
 void init(stack * sp)
 {
    sp->top = NULL;
 }
+              
+                //create function for PUSH operation 
 node * create(item_type item)
 {
   node * ptr = (node *)malloc(sizeof(node));
@@ -22,12 +30,12 @@ node * create(item_type item)
    puts("Memory is full !");
    return NULL;
   }
-
   ptr->pre=NULL;
   ptr->info=item;
-
   return ptr;
 }
+
+               //PUSH function ...
 void push(stack * sp,item_type item)
 {
   node * ptr;
@@ -44,10 +52,18 @@ void push(stack * sp,item_type item)
    sp->top=ptr;
   }
 }
+
+               //POP funtion ....
 item_type pop(stack * sp)
 {
   node * ptr;
   item_type item;
+ 
+  if(sp->top==NULL)
+  {
+    puts("ERROR ! Stack is Underflow ");
+    return 0;
+  }
 
   ptr=sp->top;
   item=ptr->info;
@@ -56,10 +72,19 @@ item_type pop(stack * sp)
   free(ptr);
   return item;
 }
+
+              //PEEK function ...
 item_type peek(stack * sp)
 {
+ if(sp->top==NULL)
+ {
+    puts("ERROR ! Stack is Underflow ");
+    return 0;
+ }
  return sp->top->info;
 }
+
+               //SIZE function
 int size(stack * sp)
 {
  node * ptr;
@@ -70,6 +95,8 @@ int size(stack * sp)
  }
  return count;
 }
+
+
 void display(stack * sp)
 {
  node * ptr;
