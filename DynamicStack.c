@@ -14,6 +14,12 @@ typedef struct
  {
   node * top;
  } stack;
+
+void init(stack * sp);
+void push(stack * sp,item_type item);
+item_type pop(stack * sp);
+item_type peek(stack * sp);
+int size(int top);
  
                //init function
 void init(stack * sp)
